@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use or discuss this project, please cite it using the metadata below."
+title: "CB-Chat (Controllable Bayesian Chat)"
+type: software
+authors:
+  - family-names: "yaoxin"
+repository-code: "https://github.com/yaoxinyaoxinyaoxin/CB-Chat"
+license: "MIT"
+abstract: >
+  A work-in-progress Proof of Concept exploring a controllable,
+  Bayesian-inspired human-AI collaboration framework centered on
+  dynamic intervention, multimodal verification, and UI-level control.
+keywords:
+  - "CB-Chat"
+  - "CB-Paradigm"
+  - "human-AI collaboration"
+  - "Bayesian-inspired updating"
+  - "multimodal verification"
