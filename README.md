@@ -34,7 +34,7 @@
 
 ## 🌟 Overview
 
-**CB-Chat (Controllable Bayesian Chat)** is a visualizable and controllable AI chat application inspired by Bayesian ideas. It aims to alleviate the "uncertainty amplification" problem that Large Language Models (LLMs) face in complex multi-step reasoning.
+**CB-Chat (Controllable Bayesian Chat)** is a Bayesian-inspired AI Agent project built around visualizable and controllable interaction design. It aims to explore and alleviate the "uncertainty amplification" problem that Large Language Models (LLMs) face in complex multi-step reasoning — grounding this exploration in a synergistic framework of three control mechanisms: **Model Autonomous Control**, **Harness Feedback Control**, and **Human Correction Control**.
 
 The working mechanism of LLMs is, in essence, to predict and sample from probability distributions, which inherently carries uncertainty. In multi-step reasoning processes, this uncertainty is further amplified. By contrast, the human user represents a relative "force of certainty" in this system.
 
@@ -69,7 +69,7 @@ During the collaboration between humans and AI, this project attempts to shift t
 
 ### The Pain Point: Uncertainty Amplification in Multi-Step Reasoning
 
-When conversing, even the most advanced Large Language Models often possess less comprehensive and accurate contextual conditions (information from the user) than the human users themselves in many complex tasks. At the same time, the mechanism by which LLMs predict and sample from probability distributions inherently carries uncertainty. During automated multi-step reasoning by AI, without precise intervention, any minor uncertainty may be amplified as the depth of reasoning increases (error accumulation).
+In complex tasks, even the most advanced Large Language Models often possess contextual conditions (information from the user) that are less comprehensive and accurate than what the human users themselves hold. At the same time, the mechanism by which LLMs predict and sample from probability distributions inherently carries uncertainty. During automated multi-step reasoning by AI, without precise intervention, any minor uncertainty may be amplified as the depth of reasoning increases (error accumulation) — this is the core stability challenge facing AI Agents in long-horizon reasoning tasks.
 
 ### The Breakthrough: Humans as High-Dimensional Observers
 
@@ -120,7 +120,7 @@ The core logic of this project borrows the **intuitive structure within Bayesian
 
 - **Key Target Identification & Stability at Minimum Cost**: From a system-design perspective, the more valuable goal is not simply to increase the number of human interventions, but to identify the small number of key nodes most likely to determine global stability with the lowest possible observation, verification, and interaction cost. If most ordinary nodes can already be automatically corrected by model capability and the verification network, then the upper bound of system stability will increasingly depend on whether the system can detect the few high-impact residual deviations in time and, when necessary, inject high-confidence human evidence or arbitration to prevent a local error from evolving into a butterfly-effect-like global drift in long-horizon tasks.
 
-- **The Intelligence Ratio in Hybrid Systems**: Within this framework, a more appropriate lens is to observe whether, under acceptable result quality, verification capability, and responsibility boundaries, the proportion of correct decisions made by humans can gradually decrease while the proportion of correct AI decisions and automatic closed-loop handling can steadily increase. This can serve as an important indicator of system intelligence. If nearly all correct decisions are still made by humans, the system remains closer to the traditional tool era; if the human share in high-level arbitration keeps declining, the system is moving toward a higher level of intelligent collaboration.
+- **The Intelligence Ratio in Hybrid Systems & The Three Control Categories**: Within this framework, a more precise lens is to observe how the proportions of the three control categories shift dynamically as AI capability matures: the higher the share of **model autonomous control and harness feedback control**, the closer the system is to a genuinely high level of intelligent collaboration; the higher the share of **human correction control**, the closer the system remains to the traditional tool paradigm. Under acceptable result quality, verification capability, and responsibility boundaries, this proportion shift — whether the share of human correction control in correct decisions can steadily decline — is a core quantitative indicator of system intelligence.
 
 - **Multimodality and Cross-Dimensional Verification**: When text, execution results, logs, file structures, vision, audio, touch, or other sensor feedback are incorporated into the same loop, the system can use the **Harness** to cross-validate across dimensions, thereby reducing the verification pressure of any single dimension and lowering the frequency of human intervention. Here, "verification" includes not only checking final results across dimensions, but also mutual validation among inputs, intermediate results, and outputs across different dimensions, thereby forming a more stereoscopic verification network. For example, in an IDE setting, code text, script execution, automated testing, output generation, and result validation can jointly verify whether a given hypothesis holds; in this sense, they themselves are part of the **Harness** and the multimodal, multi-dimensional verification mechanism.
 
@@ -148,7 +148,7 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 
 1. **The Cost of "Pseudo-Automation" is Loss of Control**: When executing long-chain, complex real-world tasks, the current so-called "full automation" of large language models often means running blindly on erroneous intermediate assumptions. In certain complex scenarios, full automation without human calibration can sometimes face challenges regarding confidence and yield.
 
-2. **The Ascension of the Human Role, Not an Increase in Burden**: In the traditional "semi-automatic" era, humans were specific executors (workers). However, in the CB-Paradigm, with the **Harness** handling low-level code correction and validation, together with multimodal cross-validation, humans no longer need to continuously participate in low-level generative labor. Instead, they have the opportunity to be elevated to **"Navigators of the probability space"** and **"High-dimensional observers"**. AI is responsible for unfolding massive trees of possibilities, while humans only perform lightweight "pruning" and "condition injection" at critical nodes. As AI and verification systems become more capable, the frequency of human intervention can decrease, even though the human role in high-level arbitration remains crucial.
+2. **The Ascension of the Human Role, Not an Increase in Burden**: In the traditional "semi-automatic" era, humans were specific executors (workers). However, in the CB-Paradigm, with **model autonomous control** (the model's intrinsic self-correction capability) and the **Harness** handling low-level verification and correction, together with multimodal cross-validation, humans no longer need to continuously participate in low-level generative labor. Instead, they have the opportunity to be elevated to **"Navigators of the probability space"** and **"High-dimensional observers"**. AI is responsible for unfolding massive trees of possibilities, while humans only perform lightweight "pruning" and "condition injection" at critical nodes. As model capability and verification systems improve, the proportion of **model autonomous control and harness feedback control** steadily increases, and the frequency of human intervention naturally declines — yet the human role in high-level arbitration remains irreplaceable.
 
 3. **The Ultimate Source of Certainty (The "Client" Law)**: Fundamentally, AI is merely a tool used to solve human needs. Since the initiator of the demand (the "Client") is human, the final basis for judging what is correct and valuable in a given task context should naturally be provided and arbitrated primarily by humans. Until the problem of entropy increase caused by AI's internal probability sampling mechanism is completely solved, human high-dimensional tacit knowledge will remain a major external source of certainty for complex systems. If one hopes to further push the human share of correct decision-making toward near zero, the obstacle will no longer be only a technical problem of uncertainty control, but will increasingly enter the domain of responsibility attribution and ethical accountability.
 
@@ -170,7 +170,7 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 
 ## 🌟 项目简介
 
-**CB-Chat (Controllable Bayesian Chat)** 是一个受贝叶斯思想启发、具有可视化与可控制特性的 AI 对话应用。它旨在缓解大语言模型（LLM）在复杂多步推理中面临的"不确定性放大"问题。
+**CB-Chat (Controllable Bayesian Chat)** 是一个受贝叶斯思想启发的 AI Agent 项目，围绕可视化与可控制的交互设计展开。它旨在探索和缓解大语言模型（LLM）在复杂多步推理中面临的"不确定性放大"问题——并将这一探索构建于**模型自主控制、Harness 反馈控制、人为修正控制**三类机制的协同框架之上。
 
 大语言模型的工作机制，本质上是基于概率分布进行预测与采样，因此先天带有不确定性。在多步骤的推导过程中，这种不确定性会被进一步放大。相比之下，人类用户在这个系统中代表着一种相对的"确定性力量"。
 
@@ -205,7 +205,7 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 
 ### 痛点：多步推理中的不确定性放大
 
-当进行对话时，即便是最先进的大语言模型，其获取的上下文条件（来自用户的信息）的内容完整性和准确性在许多复杂任务中也往往低于人类用户本身。与此同时，大语言模型基于概率分布进行预测与采样的机制，本身也天然带有不确定性。在 AI 进行多步骤的自动化推理时，如果缺乏精准的干预，任何微小的不确定性都可能随着推理深度的增加而被不断放大（误差累积）。
+在复杂任务中，即便是最先进的大语言模型，其获取的上下文条件（来自用户的信息）在完整性与准确性上也往往低于人类用户本身。与此同时，大语言模型基于概率分布进行预测与采样的机制，本身天然带有不确定性。在 AI 进行多步骤的自动化推理时，如果缺乏精准的干预，任何微小的不确定性都可能随着推理深度的增加而被不断放大（误差累积）——这正是长程推理任务中 AI Agent 面临的核心稳定性挑战。
 
 ### 破局：人类作为高维的观测者
 
@@ -256,7 +256,7 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 
 - **关键靶点识别与最小代价稳定性**：从系统设计角度看，更有价值的目标不是简单增加人工参与次数，而是以尽可能小的观测、验证与交互成本，识别最可能决定全局稳定性的少数关键节点。若大多数常规节点已经能够被模型能力与验证网络自动纠偏，那么系统的稳定性上限将越来越取决于：能否及时发现那些少量但高影响的残余偏移，并在必要时引入人类的高置信度证据或裁决，以避免局部误差在长链路任务中演化为"蝴蝶效应式"的全局偏移。
 
-- **混合系统中的智能化比例**：在这一框架下，一个更合适的观察视角，是看在结果质量、验证能力与责任边界可接受的前提下，人类正确决策所占比例能否逐步下降，而 AI 正确决策与自动闭环的比例能否稳步提升。这可以作为衡量系统智能化水平的重要指标之一。若全部正确决策几乎都由人类承担，系统更接近传统工具时代；若人类在高层裁决中的占比持续下降，则说明系统正在走向更高水平的智能协同。
+- **混合系统中的智能化比例与三类控制**：在这一框架下，一个更精确的观察视角，是看三类控制的占比如何随 AI 能力成熟而动态演变：**模型自主控制与 Harness 反馈控制**的占比越高，说明系统越接近高水平的智能协同；**人为修正控制**的占比越高，系统则越接近传统工具范式。在结果质量、验证能力与责任边界可接受的前提下，这一比例变化——人为修正控制在正确决策中的占比能否持续下降——是衡量系统智能化水平的核心量化指标。
 
 - **多模态与跨维验证**：当文本、运行结果、日志、文件结构、视觉、听觉、触觉或其他传感反馈被纳入同一闭环时，系统可以借助 **Harness** 对不同维度进行交叉验证，从而缓解单一维度验证的压力，并降低人类介入频率。这里的"验证"不仅包括不同维度最终结果之间的核对，也包括不同维度中的输入信息、中间结果与输出结果之间的相互校验，从而形成更立体的验证网络。例如在 IDE 场景中，代码文本、脚本运行、自动化测试、结果输出与结果验证，可以共同构成对"某个假设是否成立"的多维验证；从这个角度看，它们本身就是 **Harness** 与多模态、多维验证机制的一部分。
 
@@ -284,7 +284,7 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 
 1. **"假全自动"的代价是失控**：当前的大语言模型在执行长链路、复杂的真实业务时，所谓的"全自动"往往意味着在错误的中间假设上盲目狂奔。在某些复杂场景下，缺乏人类校准的全自动有时会面临置信度与良率的挑战。
 
-2. **人类角色的升维，而非增加负担**：在传统的"半自动"时代，人类是具体的执行者（工人）；而在 CB-Paradigm 中，借助 **Harness（工程护栏）** 处理底层的代码纠错与验证，并结合多模态交叉验证，人类不再需要持续参与底层的生成劳动。人类有机会被升维为**"概率空间的导航员（Navigator）"**与**"高维观测者"**。AI 负责展开庞大的可能性推理树，人类仅在关键节点进行轻量级的"剪枝"与"条件注入"。随着 AI 与验证系统能力的提升，人类介入的频率可以下降，但其在高维裁决中的作用仍然关键。
+2. **人类角色的升维，而非增加负担**：在传统的"半自动"时代，人类是具体的执行者（工人）；而在 CB-Paradigm 中，借助 **模型自主控制**（模型内在的自我纠偏能力）与 **Harness（工程护栏）** 处理底层验证与纠错，并结合多模态交叉验证，人类不再需要持续参与底层的生成劳动。人类有机会被升维为**"概率空间的导航员（Navigator）"**与**"高维观测者"**。AI 负责展开庞大的可能性推理树，人类仅在关键节点进行轻量级的"剪枝"与"条件注入"。随着模型能力与验证系统的提升，**模型自主控制与 Harness 反馈控制**的占比不断提高，人类介入的频率自然下降，但其在高维裁决中的作用仍然不可替代。
 
 3. **确定性的最终来源（"甲方"定律）**：从根本上说，AI 只是解决人类需求的工具。既然需求的提出者（甲方）是人类，那么判定"什么是正确的、什么是有价值的"这一任务语境中的最终裁决依据，天然就应该主要由人类来提供和裁决。在彻底解决 AI 内部概率采样机制带来的熵增问题之前，人类的高维隐性知识，将始终是复杂系统的重要外部确定性来源。若希望将人类在正确决策中的占比进一步压低到接近于零，其障碍也将不再只是技术上的不确定性控制问题，而会进一步进入责任归属与伦理承担的问题域。
 
