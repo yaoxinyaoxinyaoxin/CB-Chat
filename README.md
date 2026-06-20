@@ -45,6 +45,8 @@ The working mechanism of LLMs is, in essence, to predict and sample from probabi
 
 Building upon this philosophy, CB-Chat can be understood as an AI Agent project centered on three interacting control mechanisms: **Model Autonomous Control** (the model's intrinsic ability to self-correct and suppress uncertainty without external assistance), **Harness Feedback Control** (automated verification and correction driven by engineering guardrails — static analysis, automated testing, script execution, and multimodal cross-validation), and **Human Correction Control** (targeted human intervention at key high-leverage nodes). The project explores how these three categories of control work in concert to determine the stability of multi-step, long-chain reasoning — and how their proportions shift dynamically as AI intelligence matures: the higher the intelligence level of the AI Agent, the higher the share of model autonomous control and harness feedback control, while the share of human correction control correspondingly decreases. At its core, CB-Chat investigates the path toward AI Agents where automated control mechanisms handle the vast majority of reasoning nodes, and humans ascend to the role of high-dimensional observers and probability-space navigators, intervening only at the few irreducibly high-leverage target nodes.
 
+Building further on this, the project introduces the concept of **Dynamic Verifiability**: verification intensity should not be one-size-fits-all, but should be dynamically layered according to reasoning chain length and risk — relaxing verification for short-chain tasks to gain efficiency, and strengthening verification for long-chain tasks to ensure stability.
+
 During the collaboration between humans and AI, this project attempts to shift the human role positioning at the UI interaction layer — elevating humans from low-level "prompt writers" to "observers and interveners of the probability space," thereby effectively combining human prior knowledge and dynamic intervention with AI's powerful reasoning capabilities.
 
 ---
@@ -89,9 +91,11 @@ Human intervention may remain a key path to mitigating this problem. The essence
 
 6. **Real-time Feedback & Correction Evolution**: The future form will move beyond today's "turn-based" correction. By capturing conditions in real time, it can enable near-real-time correction during the AI's streaming generation process. Just like face-to-face real-time interaction between humans, interrupting at any time, correcting at any time, and synchronizing in real time, it forms a tighter closed-loop control process.
 
+7. **Dynamic Verifiability — Layered Verification**: The intensity of verification should not be uniform; it should be dynamically layered according to task complexity and risk. For short-chain tasks with few reasoning steps, where uncertainty is unlikely to amplify, verification requirements can be appropriately relaxed — excessive verification would only introduce unnecessary computational overhead and interaction cost. For large, multi-step, long-horizon projects, stricter verification mechanisms should be activated — including multi-dimensional cross-validation, comprehensive automated testing, and human review at critical nodes. This "verification-on-demand" layered design allows the system to concentrate finite verification resources on genuinely high-risk reasoning segments, achieving an optimal balance between control efficiency and outcome reliability.
+
 ### The Three Control Categories of Controllable Bayesian Elements
 
-Building upon the six design principles above, the Controllable Bayesian elements (prior information, conditions, evidence, etc.) can be further classified into three categories by their control source:
+Building upon the seven design principles above, the Controllable Bayesian elements (prior information, conditions, evidence, etc.) can be further classified into three categories by their control source:
 
 1. **Model Autonomous Control**: Corrections, verifications, and probability adjustments completed independently by the model through its own reasoning capabilities — including internal consistency checks, self-verification, and multi-path comparison. This represents the model's intrinsic ability to suppress uncertainty without external assistance.
 
@@ -124,6 +128,8 @@ The core logic of this project borrows the **intuitive structure within Bayesian
 
 - **Multimodality and Cross-Dimensional Verification**: When text, execution results, logs, file structures, vision, audio, touch, or other sensor feedback are incorporated into the same loop, the system can use the **Harness** to cross-validate across dimensions, thereby reducing the verification pressure of any single dimension and lowering the frequency of human intervention. Here, "verification" includes not only checking final results across dimensions, but also mutual validation among inputs, intermediate results, and outputs across different dimensions, thereby forming a more stereoscopic verification network. For example, in an IDE setting, code text, script execution, automated testing, output generation, and result validation can jointly verify whether a given hypothesis holds; in this sense, they themselves are part of the **Harness** and the multimodal, multi-dimensional verification mechanism.
 
+- **Dynamic Verifiability & Layered Verification Strategy**: Not all reasoning nodes require the same intensity of verification. In short-chain tasks, model autonomous control is often sufficient on its own — excessive verification only reduces efficiency. In long-chain tasks, uncertainty accumulates and amplifies with each step, requiring harness feedback control and multi-dimensional cross-validation to progressively strengthen verification. This layered strategy is, at its core, a dynamic allocation of the three control resources: letting model autonomous control dominate in low-risk segments, and activating combined harness feedback control and human correction control in high-risk segments. This risk-graded allocation of verification resources is an important design principle for improving overall system efficiency and stability.
+
 - **Human-AI Collaborative Convergence**: Through UI-level control, humans continuously input high-confidence evidence to prune reasoning paths, while AI continuously updates its judgment according to the "prior-evidence-posterior" framework. This logical closed-loop provides an operational path to help alleviate the difficulty large models face in achieving stable self-correction.
 
 ---
@@ -137,6 +143,7 @@ The core logic of this project borrows the **intuitive structure within Bayesian
 - [ ] **Active Hypothesis & Discriminative Questioning**: When information is insufficient, AI automatically generates multi-branch hypotheses and proactively asks humans for critical evidence.
 - [ ] **Multimodal Evidence Loop & Veto Power**: Combining text, execution results, logs, and sensor feedback for cross-validation; objective "hard evidence" holds veto power over erroneous hypotheses, relieving the information bottleneck of single-modality systems.
 - [ ] **Harness-Integrated Verification**: Bringing script execution, automated testing, and external tool feedback into the same verification loop to reduce the need for continuous human intervention.
+- [ ] **Dynamic Verifiability — Layered Verification**: Dynamically adjust verification intensity based on reasoning step count and task risk — relaxed for short chains, strengthened for long chains — achieving an optimal balance between efficiency and stability.
 
 ---
 
@@ -180,6 +187,8 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 - **避免人类的消耗**：通过精准的节点干预，让人类用最小的交互代价，获得最大的纠偏收益。
 
 在这一思想基础上，CB-Chat 可被理解为一个围绕三种相互作用控制机制构建的 AI Agent 项目：**模型自主控制**（模型在无需外部辅助的情况下自我纠偏与抑制不确定性的内在能力）、**Harness 反馈控制**（由静态分析、自动化测试、脚本运行验证、多模态交叉验证等工程护栏驱动的自动验证与纠正），以及**人为修正控制**（人类在关键高杠杆节点上的精准干预）。本项目探索这三类控制如何协同作用，共同决定多步骤、长程推理的稳定性——以及随着 AI 智能的成熟，三者的占比如何动态变化：AI Agent 的智能程度越高，模型自主控制与 Harness 反馈控制的占比越高，人为修正控制的占比则相应下降。CB-Chat 的核心探索方向在于：通往一种 AI Agent 形态，其中自动控制机制覆盖绝大多数推理节点，而人类升维为高维观测者与概率空间的导航员，仅在极少数不可化约的高杠杆靶点介入。
+
+在此基础上，本项目进一步提出**动态可验证性（Dynamic Verifiability）**的概念：验证的强度不应一刀切，而应根据推理链的长度与风险进行动态分层——短链任务放宽验证以换取效率，长链任务加码验证以保障稳定。
 
 在人类与 AI 的协作过程中，本项目试图在 UI 层改变人类的角色定位——将人类从底层的"提示词编写者"升维为"概率空间的观测者与干预者"，从而将人类的先验知识、动态干预与 AI 的强大推理能力有效结合。
 
@@ -225,9 +234,11 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 
 6. **实时反馈与修正演进**：未来形态将突破现有的"回合制（Turn-based）"校正。通过实时的条件捕捉，实现 AI 在流式生成（Streaming）过程中的近实时修正。如同人类之间面对面的实时互动一样，随时打断、随时纠偏、实时同频，形成更紧密的闭环控制。
 
+7. **动态可验证性——分层验证机制**：验证的强度不应是均匀的，而应根据任务的复杂度与风险进行动态分层。对于推理步骤较少、不确定性不易放大的短链任务，验证要求可以适当放宽——过度验证反而会引入不必要的计算开销与交互成本；对于大型、多步骤的长程项目，则应启动更为严格的验证机制——包括多维交叉验证、自动化测试全覆盖、关键节点的人工复核等。这种「按需验证」的分层设计，使得系统能够在保障稳定性的前提下，将有限的验证资源聚焦于真正高风险的推理环节，从而在控制效率与结果可靠性之间取得最优平衡。
+
 ### 可控制贝叶斯要素的三类控制
 
-在上述六项设计原则的基础上，可控制的贝叶斯要素（如先验信息、条件、证据等），可以按控制来源进一步分为三类：
+在上述七项设计原则的基础上，可控制的贝叶斯要素（如先验信息、条件、证据等），可以按控制来源进一步分为三类：
 
 1. **模型自主控制**：由模型通过自身推理能力独立完成的纠偏、验证与概率调整——包括内部一致性检查、自我验证、多路径对比等。这代表了模型在无需外部辅助的情况下，内在地抑制不确定性的能力。
 
@@ -260,6 +271,8 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 
 - **多模态与跨维验证**：当文本、运行结果、日志、文件结构、视觉、听觉、触觉或其他传感反馈被纳入同一闭环时，系统可以借助 **Harness** 对不同维度进行交叉验证，从而缓解单一维度验证的压力，并降低人类介入频率。这里的"验证"不仅包括不同维度最终结果之间的核对，也包括不同维度中的输入信息、中间结果与输出结果之间的相互校验，从而形成更立体的验证网络。例如在 IDE 场景中，代码文本、脚本运行、自动化测试、结果输出与结果验证，可以共同构成对"某个假设是否成立"的多维验证；从这个角度看，它们本身就是 **Harness** 与多模态、多维验证机制的一部分。
 
+- **动态可验证性与分层验证策略**：并非所有推理节点都需要同等强度的验证。短链任务中，模型自主控制往往已足够兜底，过度验证反而降低效率；长链任务中，不确定性随步数累积放大，需要 Harness 反馈控制与多维交叉验证逐层加码。这一分层策略，本质上是对三类控制资源的动态配置：在低风险区段，让模型自主控制占据主导；在高风险区段，激活 Harness 反馈控制与人为修正控制的组合验证。这种按风险梯度的验证资源分配，是提升系统整体效率与稳定性的重要设计原则。
+
 - **人机协同收敛**：通过 UI 层面的控制，人类不断输入高置信度的证据以剪枝推理路径；AI 则依据这一"先验 - 证据 - 后验"的框架持续更新判断。这套逻辑闭环为缓解大模型难以稳定自我纠偏的问题提供了一种可操作路径。
 
 ---
@@ -273,6 +286,7 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 - [ ] **主动假设与鉴别提问**：在信息不足时，AI 自动生成多分支假设，并主动向人类发问以获取关键证据。
 - [ ] **多模态证据闭环与一票否决**：联合文本、运行结果、日志与传感反馈进行交叉验证，客观"硬证据"可一票否决错误假设，缓解单一模态的信息瓶颈。
 - [ ] **Harness 集成验证**：将脚本运行、自动化测试与外部工具反馈纳入同一验证闭环，降低人类持续介入频率。
+- [ ] **动态可验证性——分层验证**：根据推理步骤数量与任务风险，动态调整验证强度——短链放宽、长链加码，实现效率与稳定性的最优平衡。
 
 ---
 
