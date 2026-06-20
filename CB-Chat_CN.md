@@ -8,6 +8,9 @@
 
 ---
 
+📖 [Read in English](README.md) · [阅读英文版](README.md)
+
+
 ## 🧭 一页速览 / At a Glance
 
 | 维度 | 内容 |
