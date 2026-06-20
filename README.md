@@ -43,6 +43,8 @@ The working mechanism of LLMs is, in essence, to predict and sample from probabi
 - **Avoiding AI's consumption**: Preventing the AI from continuing meaningless reasoning and wasting tokens on incorrect probability branches after a semantic deviation occurs.
 - **Avoiding human's consumption**: Through precise nodal intervention, allowing humans to achieve maximum correction benefits with minimal interaction costs.
 
+Building upon this philosophy, CB-Chat can be understood as an AI Agent project centered on three interacting control mechanisms: **Model Autonomous Control** (the model's intrinsic ability to self-correct and suppress uncertainty without external assistance), **Harness Feedback Control** (automated verification and correction driven by engineering guardrails — static analysis, automated testing, script execution, and multimodal cross-validation), and **Human Correction Control** (targeted human intervention at key high-leverage nodes). The project explores how these three categories of control work in concert to determine the stability of multi-step, long-chain reasoning — and how their proportions shift dynamically as AI intelligence matures: the higher the intelligence level of the AI Agent, the higher the share of model autonomous control and harness feedback control, while the share of human correction control correspondingly decreases. At its core, CB-Chat investigates the path toward AI Agents where automated control mechanisms handle the vast majority of reasoning nodes, and humans ascend to the role of high-dimensional observers and probability-space navigators, intervening only at the few irreducibly high-leverage target nodes.
+
 During the collaboration between humans and AI, this project attempts to shift the human role positioning at the UI interaction layer — elevating humans from low-level "prompt writers" to "observers and interveners of the probability space," thereby effectively combining human prior knowledge and dynamic intervention with AI's powerful reasoning capabilities.
 
 ---
@@ -176,6 +178,8 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 
 - **避免 AI 的消耗**：防止 AI 在发生语义偏移后，继续在错误的概率分支上进行毫无意义的推理与 Token 浪费。
 - **避免人类的消耗**：通过精准的节点干预，让人类用最小的交互代价，获得最大的纠偏收益。
+
+在这一思想基础上，CB-Chat 可被理解为一个围绕三种相互作用控制机制构建的 AI Agent 项目：**模型自主控制**（模型在无需外部辅助的情况下自我纠偏与抑制不确定性的内在能力）、**Harness 反馈控制**（由静态分析、自动化测试、脚本运行验证、多模态交叉验证等工程护栏驱动的自动验证与纠正），以及**人为修正控制**（人类在关键高杠杆节点上的精准干预）。本项目探索这三类控制如何协同作用，共同决定多步骤、长程推理的稳定性——以及随着 AI 智能的成熟，三者的占比如何动态变化：AI Agent 的智能程度越高，模型自主控制与 Harness 反馈控制的占比越高，人为修正控制的占比则相应下降。CB-Chat 的核心探索方向在于：通往一种 AI Agent 形态，其中自动控制机制覆盖绝大多数推理节点，而人类升维为高维观测者与概率空间的导航员，仅在极少数不可化约的高杠杆靶点介入。
 
 在人类与 AI 的协作过程中，本项目试图在 UI 层改变人类的角色定位——将人类从底层的"提示词编写者"升维为"概率空间的观测者与干预者"，从而将人类的先验知识、动态干预与 AI 的强大推理能力有效结合。
 
