@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO -->
+  <meta name="description" content="CB-Chat：可视化贝叶斯式人机协同框架——人类作为概率空间的高维观测者，通过UI层精准干预引导LLM推理收敛。A Bayesian-inspired human-AI collaboration framework with dynamic controllability, Harness-based verification, and multimodal cross-validation.">
+  <meta name="keywords" content="CB-Chat,Bayesian,human-AI collaboration,LLM,controllable AI,Harness,multimodal,cross-validation,贝叶斯,人机协同,可控AI,大语言模型">
+  <meta name="author" content="Yao Xin">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://yaoxinyaoxinyaoxin.github.io/CB-Chat/">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="CB-Chat · Controllable Bayesian Chat">
+  <meta property="og:description" content="将人类从「提示词编写者」升维为「概率空间的观测者与干预者」——可视化贝叶斯式人机协同框架。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://yaoxinyaoxinyaoxin.github.io/CB-Chat/">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="CB-Chat">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CB-Chat · Controllable Bayesian Chat">
+  <meta name="twitter:description" content="将人类从提示词编写者升维为概率空间的观测者与干预者。">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "CB-Chat",
+    "alternateName": "Controllable Bayesian Chat",
+    "author": { "@type": "Person", "name": "Yao Xin" },
+    "description": "可视化贝叶斯式人机协同框架：人类作为概率空间的高维观测者，通过UI交互层精准干预引导LLM推理收敛。",
+    "url": "https://github.com/yaoxinyaoxinyaoxin/CB-Chat",
+    "inLanguage": ["zh-CN", "en"],
+    "isAccessibleForFree": true,
+    "about": ["human-AI collaboration","Bayesian","LLM","controllable AI"],
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
+
+  <title>CB-Chat · Controllable Bayesian Chat</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', Roboto, sans-serif;
+      background: #0a0e14;
+      color: #b9c5d4;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+    /* Accent: warm amber for Bayesian/statistical theme */
+    .site-header {
+      background: #11161d;
+      border-bottom: 1px solid #1e2938;
+      padding: 2.5rem 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+    }
+    .site-header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #e8edf3;
+      max-width: 860px;
+      margin: 0 auto 0.35rem;
+      letter-spacing: -0.02em;
+    }
+    .site-header h1 span { color: #e2a83e; }
+    .site-header .subtitle {
+      font-size: 0.9rem;
+      color: #5c6e84;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin-top: 0.5rem;
+    }
+    .lang-switcher button {
+      background: #1a212c;
+      border: 1px solid #1e2938;
+      color: #5c6e84;
+      padding: 0.45rem 1.5rem;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      font-weight: 500;
+      outline: none;
+    }
+    .lang-switcher button:first-child { border-radius: 6px 0 0 6px; }
+    .lang-switcher button:last-child { border-radius: 0 6px 6px 0; }
+    .lang-switcher button.active {
+      background: #e2a83e;
+      border-color: #e2a83e;
+      color: #0a0e14;
+      z-index: 1;
+    }
+    .lang-switcher button:hover:not(.active) {
+      background: #1e2938;
+      color: #b9c5d4;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: #5c6e84;
+      margin-top: 0.6rem;
+    }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #e2a83e; display: inline-block; }
+    .status-dot.loading { animation: pulse 1.2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* Loading */
+    .loading-spinner { display: flex; justify-content: center; padding: 4rem 0; }
+    .spinner {
+      width: 34px; height: 34px;
+      border: 3px solid #1e2938;
+      border-top-color: #e2a83e;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Content */
+    .content-wrapper { max-width: 880px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
+    #content {
+      background: #11161d;
+      border: 1px solid #1e2938;
+      border-radius: 8px;
+      padding: 2.5rem 2.2rem;
+    }
+
+    /* Rendered Markdown */
+    #content h1 { font-size: 1.55rem; color: #e8edf3; margin: 1.5rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid #1e2938; }
+    #content h2 { font-size: 1.25rem; color: #e8edf3; margin: 1.5rem 0 0.6rem; }
+    #content h3 { font-size: 1.05rem; color: #e8edf3; margin: 1.2rem 0 0.5rem; }
+    #content p { margin: 0.8rem 0; }
+    #content a { color: #e2a83e; text-decoration: none; }
+    #content a:hover { text-decoration: underline; }
+    #content strong { color: #d4dde8; }
+    #content blockquote {
+      border-left: 3px solid #e2a83e;
+      padding: 0.5rem 0 0.5rem 1.25rem;
+      margin: 1rem 0;
+      color: #7b8da0;
+      background: rgba(226, 168, 62, 0.04);
+      border-radius: 0 4px 4px 0;
+    }
+    #content ul, #content ol { padding-left: 1.5rem; margin: 0.6rem 0; }
+    #content li { margin: 0.3rem 0; }
+    #content code {
+      background: rgba(232, 237, 243, 0.08);
+      padding: 0.15rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.88em;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: #c9a95c;
+    }
+    #content pre {
+      background: #0a0e14;
+      border: 1px solid #1e2938;
+      border-radius: 6px;
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    #content pre code { background: none; padding: 0; color: #b9c5d4; }
+    #content hr { border: 0; border-top: 1px solid #1e2938; margin: 1.5rem 0; }
+    #content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+    }
+    #content th, #content td {
+      border: 1px solid #1e2938;
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+    }
+    #content th { background: #1a212c; color: #d4dde8; font-weight: 600; }
+    #content tr:nth-child(even) { background: rgba(255,255,255,0.015); }
+    #content summary { cursor: pointer; color: #e2a83e; }
+    #content details { margin: 0.8rem 0; padding: 0.6rem 1rem; background: rgba(226,168,62,0.03); border: 1px solid #1e2938; border-radius: 4px; }
+
+    /* Footer */
+    .site-footer {
+      text-align: center;
+      padding: 2rem;
+      color: #3d4e62;
+      font-size: 0.82rem;
+      border-top: 1px solid #1e2938;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .site-footer a { color: #e2a83e; text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .site-header { padding: 1.5rem 1rem 1rem; }
+      .site-header h1 { font-size: 1.25rem; }
+      #content { padding: 1.5rem 1rem; }
+      .content-wrapper { padding: 0 0.75rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1 id="dynamic-title"><span>CB-Chat</span> · Controllable Bayesian Chat</h1>
+  <p class="subtitle">人人都是贝叶斯 · Everyone is a Bayesian</p>
+  <div class="lang-switcher">
+    <button id="btn-cn" class="active" onclick="switchLang('cn')">中文</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+  <div class="status-badge">
+    <span id="status-dot" class="status-dot loading"></span>
+    <span id="status-text">Loading...</span>
+  </div>
+</header>
+
+<div class="content-wrapper">
+  <main id="content">
+    <div class="loading-spinner"><div class="spinner"></div></div>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <p>
+    <a href="https://github.com/yaoxinyaoxinyaoxin/CB-Chat">GitHub</a>
+    &nbsp;·&nbsp; MIT License
+    &nbsp;·&nbsp; <a href="https://github.com/yaoxinyaoxinyaoxin/CB-Chat/issues">Issues</a>
+  </p>
+</footer>
+
+<script>
+  const CN_FILE = 'CB-Chat_CN.md';
+  const EN_FILE = 'CB-Chat_EN.md';
+  const CN_TITLE = 'CB-Chat · Controllable Bayesian Chat';
+  const EN_TITLE = 'CB-Chat · Controllable Bayesian Chat';
+
+  let currentLang = 'cn';
+  let cached = { cn: null, en: null };
+
+  function $(id) { return document.getElementById(id); }
+
+  function updateStatus(loading, text) {
+    const dot = $('status-dot');
+    const label = $('status-text');
+    dot.className = 'status-dot' + (loading ? ' loading' : '');
+    label.textContent = text;
+  }
+
+  async function loadMarkdown(lang) {
+    if (cached[lang]) return cached[lang];
+    const file = lang === 'cn' ? CN_FILE : EN_FILE;
+    const resp = await fetch(file);
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const text = await resp.text();
+    cached[lang] = text;
+    return text;
+  }
+
+  function renderMarkdown(md) {
+    let html = md;
+    // Fenced code blocks
+    html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) =>
+      '<pre><code>' + esc(code.trimEnd()) + '</code></pre>');
+    // Inline code
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    // Bold + italic
+    html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    // Images
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
+    // Links
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    // HR
+    html = html.replace(/^---+$/gm, '<hr>');
+    // Blockquotes
+    html = html.replace(/(^> .+(\n> .+)*)/gm, m => {
+      const lines = m.split('\n').map(l => l.replace(/^> ?/, ''));
+      return '<blockquote>' + lines.join('\n') + '</blockquote>';
+    });
+    // Headings
+    html = html.replace(/^#### (.+)$/gm, '<h4>$1</h4>');
+    html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+    html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+    html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+    // Tables
+    html = html.replace(/(^\|.+\|$\n^\|[-|\s:]+\|$\n(?:^\|.+\|$\n?)*)/gm, table => {
+      const rows = table.trim().split('\n');
+      let r = '<table><thead><tr>';
+      rows[0].split('|').filter(c => c.trim()).forEach(c => r += '<th>' + c.trim() + '</th>');
+      r += '</tr></thead><tbody>';
+      for (let i = 2; i < rows.length; i++) {
+        r += '<tr>';
+        rows[i].split('|').filter(c => c.trim()).forEach(c => r += '<td>' + c.trim() + '</td>');
+        r += '</tr>';
+      }
+      return r + '</tbody></table>';
+    });
+    // Lists
+    html = html.replace(/((?:^- .+\n?)+)/gm, list => {
+      const items = list.trim().split('\n').map(l => '<li>' + l.replace(/^- /, '') + '</li>');
+      return '<ul>' + items.join('') + '</ul>';
+    });
+    html = html.replace(/((?:^\d+\. .+\n?)+)/gm, list => {
+      const items = list.trim().split('\n').map(l => '<li>' + l.replace(/^\d+\. /, '') + '</li>');
+      return '<ol>' + items.join('') + '</ol>';
+    });
+    // Bug: numbered list items inside <details> - keep untouched via a simpler pass
+    // Convert <details>/<summary> to HTML
+    html = html.replace(/<details>/g, '<details>');
+    html = html.replace(/<\/details>/g, '</details>');
+    html = html.replace(/<summary>/g, '<summary>');
+    html = html.replace(/<\/summary>/g, '</summary>');
+    // Paragraphs
+    const lines = html.split('\n');
+    let result = [], para = [];
+    function flush() { if (para.length) { result.push('<p>' + para.join(' ') + '</p>'); para = []; } }
+    for (let line of lines) {
+      const t = line.trim();
+      if (!t) { flush(); result.push(''); continue; }
+      if (/^<(h[1-6]|table|thead|tbody|tr|th|td|ul|ol|li|blockquote|pre|hr|img|p|div|details|summary)/.test(t) || /^<\/(table|ul|ol|blockquote|pre|div|details)>/.test(t)) {
+        flush(); result.push(t); continue;
+      }
+      para.push(t);
+    }
+    flush();
+    return result.join('\n');
+  }
+
+  function esc(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function updateButtons(lang) {
+    $('btn-cn').className = lang === 'cn' ? 'active' : '';
+    $('btn-en').className = lang === 'en' ? 'active' : '';
+  }
+
+  async function switchLang(lang) {
+    if (lang === currentLang && cached[lang]) return;
+    currentLang = lang;
+    updateButtons(lang);
+    $('content').innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
+    updateStatus(true, lang === 'cn' ? '加载中文版...' : 'Loading English...');
+    window.location.hash = lang;
+
+    try {
+      const md = await loadMarkdown(lang);
+      const html = renderMarkdown(md);
+      $('content').innerHTML = html;
+      updateStatus(false, (lang === 'cn' ? '中文版' : 'English') + ' · ' + new Date().toLocaleDateString());
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      $('content').innerHTML = '<p style="color:#f85149;text-align:center;padding:3rem 0;">Failed to load: ' + err.message + '</p>';
+      updateStatus(false, 'Error');
+    }
+  }
+
+  (function() {
+    const hash = window.location.hash.replace('#', '');
+    const lang = (hash === 'en') ? 'en' : 'cn';
+    switchLang(lang);
+  })();
+</script>
+
+</body>
+</html>
