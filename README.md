@@ -25,6 +25,7 @@
 - [Overview](#-overview)
 - [CB-Paradigm Derivatives](#-cb-paradigm-derivatives)
 - [Core Philosophy](#-core-philosophy)
+  - [The Three Control Categories](#-the-three-control-categories-of-controllable-bayesian-elements)
 - [Logic Evaluation](#-logic-evaluation)
 - [Key Features](#-key-features)
 - [Philosophical Reflection](#-philosophical-reflection)
@@ -86,6 +87,23 @@ Human intervention may remain a key path to mitigating this problem. The essence
 
 6. **Real-time Feedback & Correction Evolution**: The future form will move beyond today's "turn-based" correction. By capturing conditions in real time, it can enable near-real-time correction during the AI's streaming generation process. Just like face-to-face real-time interaction between humans, interrupting at any time, correcting at any time, and synchronizing in real time, it forms a tighter closed-loop control process.
 
+### The Three Control Categories of Controllable Bayesian Elements
+
+Building upon the six design principles above, the Controllable Bayesian elements (prior information, conditions, evidence, etc.) can be further classified into three categories by their control source:
+
+1. **Model Autonomous Control**: Corrections, verifications, and probability adjustments completed independently by the model through its own reasoning capabilities — including internal consistency checks, self-verification, and multi-path comparison. This represents the model's intrinsic ability to suppress uncertainty without external assistance.
+
+2. **Harness Feedback Control**: Automated corrections driven by the engineering harness (Harness) — including static analysis, automated testing, script execution verification, and multimodal cross-validation. These system-level feedback loops provide objective, reproducible verification signals that can autonomously eliminate erroneous probability branches.
+
+3. **Human Correction Control**: Interventions initiated by humans — including condition injection, evidence provision, direction locking, and final arbitration at key nodes. This represents the external "force of certainty" that the human, as the ultimate client and high-dimensional observer, contributes to the system.
+
+These three categories together determine the stability of the model in multi-step, long-chain reasoning tasks. Crucially, **the higher the intelligence level of an AI Agent, the higher the proportion of the first two categories** (model autonomous control and harness feedback control), while the proportion of human correction control correspondingly decreases. This is not merely a design preference — it is a measurable indicator of AI capability maturation:
+
+- A system where most corrections still depend on human intervention remains closer to the traditional tool paradigm.
+- A system where model autonomous control and harness feedback control handle the vast majority of reasoning nodes, with humans intervening only at a small number of high-leverage target nodes, represents a genuinely higher level of intelligent collaboration.
+
+In the ideal limit, an AI Agent with sufficiently advanced intelligence would autonomously handle nearly all reasoning nodes through model autonomous control and harness feedback control, with humans only needing to exercise their retained intervention rights at the very few nodes where value judgment, goal arbitration, or ethical accountability is irreducibly required. This proportion shift — the declining share of human correction control relative to the other two categories — is itself an important quantitative indicator of AI Agent intelligence evolution, and a core optimization objective of the CB-Paradigm.
+
 ---
 
 ## 🎯 Logic Evaluation
@@ -141,6 +159,7 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 - [项目简介](#-项目简介)
 - [CB-Paradigm 衍生场景](#-cb-paradigm-衍生场景)
 - [核心思想](#-核心思想)
+  - [可控制贝叶斯要素的三类控制](#-可控制贝叶斯要素的三类控制)
 - [核心逻辑评估](#-核心逻辑评估)
 - [核心特性](#-核心特性)
 - [哲学思考](#-哲学思考)
@@ -201,6 +220,23 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 5. **多模态交叉验证与一票否决机制**：当文本、运行结果、日志、文件结构、视觉、听觉、触觉或其他传感反馈被纳入同一闭环时，系统可以借助 Harness 对不同维度的信息进行交叉验证。在多维验证中，客观的"硬证据"（如报错的脚本、矛盾的视觉反馈）对当前的先验假设具有 **"一票否决权"**，可以直接排除该错误假设；而当多方证据支持不一致时，系统会悬停并提示重新收集信息、重新推理与复盘。这种机制不仅缓解了单一维度验证的压力，也极大降低了人类持续介入的频率。
 
 6. **实时反馈与修正演进**：未来形态将突破现有的"回合制（Turn-based）"校正。通过实时的条件捕捉，实现 AI 在流式生成（Streaming）过程中的近实时修正。如同人类之间面对面的实时互动一样，随时打断、随时纠偏、实时同频，形成更紧密的闭环控制。
+
+### 可控制贝叶斯要素的三类控制
+
+在上述六项设计原则的基础上，可控制的贝叶斯要素（如先验信息、条件、证据等），可以按控制来源进一步分为三类：
+
+1. **模型自主控制**：由模型通过自身推理能力独立完成的纠偏、验证与概率调整——包括内部一致性检查、自我验证、多路径对比等。这代表了模型在无需外部辅助的情况下，内在地抑制不确定性的能力。
+
+2. **Harness 反馈控制**：由工程护栏（Harness）驱动的自动化纠正——包括静态分析、自动化测试、脚本运行验证、多模态交叉验证等系统级反馈。这些反馈回路提供客观、可复现的验证信号，能够自主排除错误的概率分支。
+
+3. **人为修正控制**：由人类主动发起的干预——包括关键节点的条件注入、证据提供、方向锁定与最终裁决。这代表了人类作为最终需求方和高维观测者，向系统中注入的外部确定性力量。
+
+这三类控制共同决定了模型在多步骤、长程推理任务中的稳定性。关键在于，**AI Agent 的智能程度越高，前两者（模型自主控制与 Harness 反馈控制）的占比越高**，人为修正控制的占比则相应下降。这不仅是一种设计偏好，更是 AI 能力成熟度的可度量标志：
+
+- 若大多数纠偏仍依赖人类干预，系统更接近传统工具范式。
+- 若模型自主控制与 Harness 反馈控制已能覆盖绝大多数推理节点，人类仅在少量高杠杆靶点介入，则代表了真正更高水平的智能协同。
+
+在理想极限下，一个智能程度足够高的 AI Agent，应能通过模型自主控制与 Harness 反馈控制自主处理近乎所有推理节点，人类仅需在价值判断、目标裁决或伦理责任等不可化约的极少数节点中，行使其保留的干预权限。这一比例变化——人为修正控制相对于前两类的持续下降——本身就是衡量 AI Agent 智能演进的重要量化指标，也是 CB-Paradigm 的核心优化目标。
 
 ---
 
