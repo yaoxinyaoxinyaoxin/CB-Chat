@@ -81,7 +81,7 @@ Human intervention may remain a key path to mitigating this problem. The essence
 
 ### Solution: Visualized and Controllable Bayesian-Inspired Updating
 
-1. **Visualizing Bayesian-Inspired Elements**: At the interaction layer, visually breaking down the "prior", "conditions/evidence (likelihood)", and "posterior judgment" in the chat and reasoning process, making black-box reasoning more transparent. Here, "Bayesian" is used primarily as a cognitive and design framework rather than as a strict mathematical reconstruction of the model's internal state.
+1. **Visualizing the Bayesian-Inspired Dynamic Loop**: At the interaction layer, visually breaking down the complete dynamic iteration cycle — **"prior → conditions/evidence → posterior judgment → execute → result → verify → feedback → (iterate)"** — making the full chain from cognition to execution to verification transparent. Here, "Bayesian" is used primarily as a cognitive and design framework rather than as a strict mathematical reconstruction of the model's internal state.
 
 2. **Human Intervention & Control**: Allowing users to accurately limit the AI's direction of thought by controlling and modifying conditions, enabling the AI to explore only in specific, controlled directions.
 
@@ -116,7 +116,7 @@ In the ideal limit, an AI Agent with sufficiently advanced intelligence would au
 
 ## 🎯 Logic Evaluation
 
-The core logic of this project borrows the **intuitive structure within Bayesian thinking**: "Prior Knowledge + New Evidence = Posterior Cognition." In this document, "Bayesian" is used mainly to describe a visualizable, intervenable, and verifiable human-AI collaboration framework, rather than to make a strict mathematical claim about the model's parameters or internal probability distribution.
+The core logic of this project borrows the **intuitive structure within Bayesian thinking** and extends it into a dynamic iteration cycle: from the cognitive framework of "Prior Knowledge + New Evidence = Posterior Cognition," further extended into the complete Agent execution chain — **"Prior → Conditions/Evidence → Posterior Judgment → Execute → Result → Verify → Feedback → (Iterate)"**. In this document, "Bayesian" is used mainly to describe a visualizable, intervenable, and verifiable human-AI collaboration framework, rather than to make a strict mathematical claim about the model's parameters or internal probability distribution.
 
 - **The Verification Bottleneck of Single-Modality Systems & The Trend Toward Multimodality**: In pure-text or other single-dimensional systems, the model lacks information from other dimensions and external closed-loop verification. As a result, something that appears semantically plausible is not necessarily factually or task-wise verified. This creates a clear ceiling for verifiability and robustness in single-modality systems. Rich multimodal information and multi-dimensional cross-validation refer not only to checking final results across different dimensions, but also to mutual verification among inputs, intermediate results, and outputs across those dimensions, thereby forming a more stereoscopic verification network. This mechanism can effectively suppress the amplification of uncertainty, thereby reducing the frequency of human intervention and making the AI appear more intelligent and biomimetic. This is also one of the important underlying reasons why AI continues to evolve toward multimodality.
 
@@ -132,13 +132,13 @@ The core logic of this project borrows the **intuitive structure within Bayesian
 
 - **Dynamic Verifiability & Layered Verification Strategy**: Not all reasoning nodes require the same intensity of verification. In short-chain tasks, model autonomous control is often sufficient on its own — excessive verification only reduces efficiency. In long-chain tasks, uncertainty accumulates and amplifies with each step, requiring harness feedback control and multi-dimensional cross-validation to progressively strengthen verification. This layered strategy is, at its core, a dynamic allocation of the three control resources: letting model autonomous control dominate in low-risk segments, and activating combined harness feedback control and human correction control in high-risk segments. This risk-graded allocation of verification resources is an important design principle for improving overall system efficiency and stability.
 
-- **Human-AI Collaborative Convergence**: Through UI-level control, humans continuously input high-confidence evidence to prune reasoning paths, while AI continuously updates its judgment according to the "prior-evidence-posterior" framework. This logical closed-loop provides an operational path to help alleviate the difficulty large models face in achieving stable self-correction.
+- **Human-AI Collaborative Convergence**: Through UI-level control, humans continuously input high-confidence evidence to prune reasoning paths, while AI continuously updates its judgment according to the **"prior → conditions/evidence → posterior judgment → execute → result → verify → feedback → (iterate)"** dynamic loop — where verification results are automatically fed back as new evidence, driving the next iteration. This logical closed-loop provides an operational path to help alleviate the difficulty large models face in achieving stable self-correction.
 
 ---
 
 ## 🚀 Key Features
 
-- [ ] **Visualized Condition Nodes**: Breaking down complex prompts into visual prior, evidence, and posterior-judgment nodes.
+- [ ] **Dynamic Loop Node Visualization**: Breaking down complex prompts into visual nodes for each stage of the complete dynamic loop — prior, conditions/evidence, posterior judgment, execution, result, verification, and feedback — covering the full chain from cognition to execution to verification.
 - [ ] **Reasoning Direction Locking**: Forcing AI to explore along designated probability paths via drag-and-drop or parameter adjustment.
 - [ ] **Dynamic Bayesian-Inspired Updating**: Real-time reflection of how AI judgment and reasoning paths change after new evidence is added.
 - [ ] **Multi-step Correction & Backtracking**: Reverting to any probability fork point at any time, modifying conditions, and regenerating.
@@ -172,7 +172,7 @@ My perspective is: **This is perhaps not a step backward, but rather a "role asc
 | Dimension | Shared Ground |
 |-----------|---------------|
 | **Verification as load-bearing** | Both recognize that a loop without verification is just automation (SonarSource). CB-Chat's **Harness Feedback Control** and Loop Engineering's **Verification Loop** serve the same function: automated, reproducible correctness checks. |
-| **Multi-step reasoning stability** | Both address the core problem that single-pass LLM outputs degrade over long reasoning chains. Loop Engineering breaks tasks into Plan→Execute→Verify cycles; CB-Chat visualizes prior→evidence→posterior nodes for each reasoning step. |
+| **Multi-step reasoning stability** | Both address the core problem that single-pass LLM outputs degrade over long reasoning chains. Loop Engineering breaks tasks into Plan→Execute→Verify cycles; CB-Chat visualizes the full "prior→evidence→posterior→execute→result→verify→feedback" dynamic loop for each reasoning step. |
 | **Human-in-the-Loop** | Both acknowledge that fully autonomous agents need human intervention at critical junctures. Loop Engineering's HITL pattern and CB-Chat's **Human Correction Control** share the same premise. |
 | **Iteration until convergence** | Both reject one-shot prompting. CB-Chat's dynamic Bayesian updating and Loop Engineering's iterate-until-condition-met are the same underlying cyclic principle. |
 | **Harness/Guardrails** | CB-Chat's **Harness** (engineering guardrails for verification) directly parallels the Loop Engineering "Harness" layer in the Orange Book's four-layer architecture. |
@@ -277,7 +277,7 @@ This is why CB-Chat is not merely "Loop Engineering with a better UI." It addres
 
 ### 解决方案：可视化与可控的贝叶斯式更新
 
-1. **可视化贝叶斯式要素**：在交互层将对话和推理过程中的"先验"、"条件/证据（似然）"和"后验判断"进行可视化拆解，让黑盒推理变得更透明。这里的"贝叶斯"主要作为设计框架中的认知表达，而非对底层模型内部状态的严格数学还原。
+1. **可视化贝叶斯式动态循环**：在交互层将对话和推理过程中的完整动态迭代循环——「先验 → 条件/证据 → 后验判断 → 执行 → 结果 → 验证 → 反馈 →（迭代）」——进行可视化拆解，让黑盒推理从认知到执行再到验证的全链路变得更加透明。这里的"贝叶斯"主要作为设计框架中的认知表达，而非对底层模型内部状态的严格数学还原。
 
 2. **人类干预与控制**：允许用户通过控制和修改条件，准确限定 AI 的思考方向，让 AI 仅在特定、受控的方向上进行探索。
 
@@ -312,7 +312,7 @@ This is why CB-Chat is not merely "Loop Engineering with a better UI." It addres
 
 ## 🎯 核心逻辑评估
 
-本项目的核心逻辑借用了**贝叶斯思想中的直观结构**："先验知识 + 新证据 = 后验认知"。在本文中，"贝叶斯"主要用于描述一种可视化、可干预、可验证的人机协同框架，而不是对底层模型参数或内部概率分布的严格数学声明。
+本项目的核心逻辑借用了**贝叶斯思想中的直观结构**并进行了动态迭代扩展：从「先验知识 + 新证据 = 后验认知」的认知框架，进一步延伸为覆盖完整 Agent 执行链路的**「先验 → 条件/证据 → 后验判断 → 执行 → 结果 → 验证 → 反馈 →（迭代）」**动态循环。在本文中，"贝叶斯"主要用于描述一种可视化、可干预、可验证的人机协同框架，而不是对底层模型参数或内部概率分布的严格数学声明。
 
 - **单一模态的验证瓶颈与多模态的演进趋势**：在纯文本或其他单一维度系统中，模型缺乏来自其他维度的信息与外部闭环验证，因此"语义上看起来合理"并不等于"事实或任务上已经被验证"。这使得单一模态系统在可验证性与稳健性上存在明显上限。而丰富的多模态信息与多维度的交叉验证，所指的并不只是不同维度最终结果之间的验证，还包括不同维度中的输入信息、中间结果与输出结果之间的相互校验，从而形成更立体的验证网络。这种机制能够有效抑制不确定性的放大，从而减少人类的干预频率，使得 AI 表现得更加智能与仿生。这也是 AI 持续朝多模态方向演进的重要底层逻辑之一。
 
@@ -328,13 +328,13 @@ This is why CB-Chat is not merely "Loop Engineering with a better UI." It addres
 
 - **动态可验证性与分层验证策略**：并非所有推理节点都需要同等强度的验证。短链任务中，模型自主控制往往已足够兜底，过度验证反而降低效率；长链任务中，不确定性随步数累积放大，需要 Harness 反馈控制与多维交叉验证逐层加码。这一分层策略，本质上是对三类控制资源的动态配置：在低风险区段，让模型自主控制占据主导；在高风险区段，激活 Harness 反馈控制与人为修正控制的组合验证。这种按风险梯度的验证资源分配，是提升系统整体效率与稳定性的重要设计原则。
 
-- **人机协同收敛**：通过 UI 层面的控制，人类不断输入高置信度的证据以剪枝推理路径；AI 则依据这一"先验 - 证据 - 后验"的框架持续更新判断。这套逻辑闭环为缓解大模型难以稳定自我纠偏的问题提供了一种可操作路径。
+- **人机协同收敛**：通过 UI 层面的控制，人类不断输入高置信度的证据以剪枝推理路径；AI 则依据「先验 → 条件/证据 → 后验判断 → 执行 → 结果 → 验证 → 反馈 →（迭代）」的动态循环框架持续更新判断——验证结果自动回注为新证据，驱动下一轮迭代。这套逻辑闭环为缓解大模型难以稳定自我纠偏的问题提供了一种可操作路径。
 
 ---
 
 ## 🚀 核心特性
 
-- [ ] **条件节点可视化**：将复杂的 Prompt 拆解为可视化的先验、证据与后验判断节点。
+- [ ] **动态循环节点可视化**：将复杂的 Prompt 拆解为可视化的完整动态循环节点——先验、条件/证据、后验判断、执行、结果、验证、反馈——覆盖从认知到执行到验证的全链路。
 - [ ] **推理方向锁定**：通过拖拽或参数调整，强制 AI 沿着指定概率路径探索。
 - [ ] **动态贝叶斯式更新**：实时反映新证据加入后，AI 判断与推理路径的变化。
 - [ ] **多步纠偏回溯**：随时回退到任意概率分叉点，修改条件重新生成。
@@ -368,7 +368,7 @@ This is why CB-Chat is not merely "Loop Engineering with a better UI." It addres
 | 维度 | 共同立场 |
 |------|---------|
 | **验证的承重地位** | 两者都认为"没有验证的循环只是自动化"（SonarSource）。CB-Chat 的 **Harness 反馈控制**与 Loop Engineering 的 **Verification Loop** 服务于同一目标：自动化、可复现的正确性检查。 |
-| **多步推理的稳定性** | 两者都针对同一个核心问题：LLM 的单次输出在长推理链中会持续退化。Loop Engineering 将任务拆解为 Plan→Execute→Verify 循环；CB-Chat 将每个推理步骤可视化为先验→证据→后验节点。 |
+| **多步推理的稳定性** | 两者都针对同一个核心问题：LLM 的单次输出在长推理链中会持续退化。Loop Engineering 将任务拆解为 Plan→Execute→Verify 循环；CB-Chat 将每个推理步骤可视化为完整的「先验→证据→后验→执行→结果→验证→反馈」动态循环节点。 |
 | **Human-in-the-Loop** | 两者都承认全自主 Agent 需要在关键节点引入人类干预。Loop Engineering 的 HITL 模式与 CB-Chat 的 **人为修正控制**共享同一前提。 |
 | **迭代至收敛** | 两者都拒绝一次性 Prompt。CB-Chat 的动态贝叶斯更新与 Loop Engineering 的"迭代至条件满足"是同一循环原理。 |
 | **Harness / 工程护栏** | CB-Chat 的 **Harness**（工程验证护栏）与 Orange Book 四层架构中的 Harness 层直接对应。 |
