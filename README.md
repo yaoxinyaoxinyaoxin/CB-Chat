@@ -59,14 +59,12 @@ During the collaboration between humans and AI, this project attempts to shift t
 >
 > This project serves as a Proof of Concept (PoC) prototype, aiming to intuitively explore and demonstrate this philosophy. **Its core "Dynamic Controllability" — preserving, at the permission level, the human ability to strongly intervene and correct probabilities at any AI reasoning node, while in actual operation prioritizing automatic correction by the verification network and concentrating human certainty on the small number of high-risk, high-leverage target nodes that are difficult to correct automatically — can be regarded as a new paradigm of intelligent collaboration (CB-Paradigm).**
 >
-> This "dynamic controllability" is not limited to chat. The following derived application scenarios map the **8-step dynamic loop** (Prior → Evidence → Posterior → Execute → Result → Verify → Feedback → Iterate) onto different AI infrastructure domains:
+> This "dynamic controllability" is not limited to chat. The following derived scenarios map the unified architecture of the **8-step dynamic loop + three control categories** onto two core problem domains:
 
-| Scenario | Positioning | Core Value |
-|----------|-------------|------------|
-| **CB-IDE** | AI coding tools (Cursor/Trae/Windsurf) | Each reasoning step maps to the dynamic loop: business conditions inject at **Evidence**, code generation at **Execute**, test runs at **Verify**, and failures feed back as new **Evidence** — the IDE itself becomes a multi-dimensional Harness. Human intervention focuses on architectural and business-logic target nodes where automated verification cannot reach. |
-| **CB-Agent** | Fully automated agent loops | The agent loop runs autonomously through all 8 stages; the human ascends to a high-dimensional observer, intervening only at **identified target nodes** — where pre-set conditions cannot suppress emerging uncertainty, or where value judgment and goal arbitration are irreducibly required. As Model Autonomous Control and Harness Feedback Control mature, the proportion of Human Correction Control naturally declines. |
-| **CB-Embodied** | Embodied control / physical-space decisions | Spatial presets = **Prior**; real-time sensor streams = continuous **Evidence**; physical execution = **Execute→Result**; cross-modal sensor fusion (visual, tactile, proprioceptive) = multi-dimensional **Verify**. Objective hard physical evidence holds **veto power** over erroneous hypotheses — applicable to robotics, assisted driving, and motion planning. |
-| **CB-Loop** | Loop Engineering integration (Claude Code / Codex / Hermes Agent) | CB-Paradigm applied to autonomous coding agent loops: pre-set conditions govern the **Discover→Plan→Execute→Verify→Iterate** cycle, but when uncertainty escapes pre-set guardrails at mid-execution reasoning nodes, dynamic node-level human certainty injection activates — directly addressing the structural blind spot in pure Loop Engineering. |
+| Scenario | Domain | Core Value |
+|----------|--------|------------|
+| **CB-Agent** | Software/information domain (full spectrum: IDE collaboration → fully autonomous loops) | A unified architecture of the 8-step dynamic loop + three control categories. The proportions of the three controls shift dynamically with AI maturity: in the IDE collaboration phase, the human intervenes frequently inside the loop and the IDE toolchain itself becomes a multi-dimensional Harness; as Model Autonomous Control and Harness Feedback Control strengthen, Human Correction Control declines and the human ascends to a high-dimensional observer above the loop, intervening only at target nodes. Its advanced form — pre-set conditions govern autonomous loops, but dynamic node-level human certainty injection activates when uncertainty escapes pre-set guardrails — directly addresses the structural blind spot in pure Loop Engineering. |
+| **CB-Embodied** | Physical/spatial domain | The same 8-step dynamic loop + three control categories architecture. Spatial presets = **Prior**; real-time sensor streams = continuous **Evidence**; physical execution = **Execute→Result**; cross-modal sensor fusion (visual, tactile, proprioceptive) = multi-dimensional **Verify**. The sole essential difference from CB-Agent: the Verify stage draws from objective hard physical evidence, which holds **veto power** over erroneous hypotheses. Applicable to robotics, assisted driving, and motion planning. |
 ---
 
 ## 💡 Core Philosophy
@@ -255,14 +253,12 @@ This is why CB-Chat is not merely "Loop Engineering with a better UI." It addres
 >
 > 开发的这项应用是一个概念验证（Proof of Concept）原型，旨在直观探讨和展示这一思想。**其核心的"动态可控性（Dynamic Controllability）"——即允许人类在权限层面保留对 AI 任意推理节点进行强干预与概率修正的能力，但在实际运行中优先依赖验证网络自动纠偏，并将人类的确定性注入聚焦于少量高风险、高杠杆、难以自动校正的关键节点（靶点）——可被视为一种新的智能协同范式（CB-Paradigm）。**
 >
-> 这一"动态可控"思想并不局限于对话。以下衍生应用场景将 **8 步动态循环**（先验 → 条件/证据 → 后验判断 → 执行 → 结果 → 验证 → 反馈 → 迭代）映射到不同的 AI 基础设施领域：
+> 这一"动态可控"思想并不局限于对话。以下衍生场景将 **8 步动态循环 + 三类控制** 的统一架构映射到两个核心问题域：
 
-| 场景 | 定位 | 核心价值 |
-|------|------|----------|
-| **CB-IDE** | AI 编程工具（Cursor/Trae/Windsurf） | 每个推理步骤映射到动态循环：业务条件在 **Evidence** 阶段注入，代码生成在 **Execute** 阶段，测试运行在 **Verify** 阶段，失败结果作为新 **Evidence** 反馈——IDE 本身成为多维 Harness。人类介入聚焦于自动化验证无法覆盖的架构与业务逻辑层面的靶点。 |
-| **CB-Agent** | 全自动智能体循环 | Agent 在全部 8 个阶段自主运行；人类升维为高维观测者，仅在**识别到的靶点**介入——即预设条件无法压制的不确定性浮现处、或价值判断与目标裁决不可化约处。随着模型自主控制与 Harness 反馈控制增强，人为修正控制的占比自然下降。 |
-| **CB-Embodied** | 具身控制 / 物理空间决策 | 空间预设 = **Prior**；实时传感流 = 持续的 **Evidence**；物理执行 = **Execute→Result**；跨模态传感融合（视觉、触觉、本体感知）= 多维度 **Verify**。客观物理硬证据对错误假设具有**一票否决权**——适用于机器人、辅助驾驶、运动规划。 |
-| **CB-Loop** | Loop Engineering 集成（Claude Code / Codex / Hermes Agent） | CB-Paradigm 应用于自主编程 Agent 循环：预设条件主导 **Discover→Plan→Execute→Verify→Iterate** 周期，但当不确定性在执行中途溢出预设护栏时，动态节点级人类确定性注入激活——直接填补纯 Loop Engineering 的结构性盲区。 |
+| 场景 | 问题域 | 核心价值 |
+|------|--------|----------|
+| **CB-Agent** | 软件/信息域（覆盖 IDE 协作 → 全自主 Loop 的连续谱） | 8 步动态循环 + 三类控制统一架构。三类控制的占比随 AI 智能成熟度动态变化：在 IDE 协作阶段，人类在循环内高频介入，IDE 工具链本身成为多维 Harness；随着模型自主控制与 Harness 反馈控制增强，人为修正控制占比下降，人类升维为循环上的高维观测者，仅在靶点介入。其高级形态——预设条件主导自主循环，但当不确定性溢出预设护栏时激活动态节点级人类确定性注入——直接填补纯 Loop Engineering 的结构性盲区。 |
+| **CB-Embodied** | 物理/空间域 | 同样的 8 步动态循环 + 三类控制架构。空间预设 = **Prior**；实时传感流 = 持续的 **Evidence**；物理执行 = **Execute→Result**；跨模态传感融合（视觉、触觉、本体感知）= 多维度 **Verify**。与 CB-Agent 的唯一本质差异：Verify 阶段来自物理世界的客观硬证据，对错误假设具有**一票否决权**。适用于机器人、辅助驾驶、运动规划。 |
 ---
 
 ## 💡 核心思想
